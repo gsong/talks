@@ -1,0 +1,31 @@
+A new heading:
+	- A new task
+	- Another task
+	Subheading:
+		- Sub task
+Rename technicolor to declaredsep:
+	- Stop the rails and django apps
+	PostgreSQL:
+		- ALTER USER technicolor RENAME TO declaredsep;
+		- ALTER USER declaredsep password xxx;
+		- ALTER DATABASE name RENAME TO new_name
+	nginx:
+		- Rename SSL certificate
+		- rm /etc/nginx/sites-enabled/technicolor
+		- mv /etc/nginx/technicolor-locations /etc/nginx/declaredsep-locations
+	/etc/init.d:
+		- rm unicorn_technicolor
+	/etc/init/:
+		- rm delayed_job-technicolor.conf
+		- rm uwsgi-technicolor-datatools.conf
+	/etc/logrotate.d:
+		- rm postgresql-backup-technicolor
+	~/apps:
+		- mv ~/apps/technicolor*
+		- blow away git cache
+	Rails:
+		- run cap deploy:setup
+	Django:
+		- rmvirtualenv technicolor-datatools
+		- run fab deploy.setup
+	- Redeploy apps
