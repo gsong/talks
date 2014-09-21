@@ -72,26 +72,72 @@ Accompanying [screencast](http://youtu.be/8SLWfiSjB0Q).
 
 ## Intermediate
 
-If you need to work on multiple versions of Python, or if you are working on an
-open source package and need to test across multiple versions of Python.
 
-1.  [requirements.txt][]
+1.  Use [requirements.txt][] in your own projects to keep track of Python
+    package dependencies.
 
-15. [pyenv][]
+2.  [pyenv][]
+
+    If you need to work on multiple versions of Python, or if you are working
+    on an open source package and need to test across multiple versions of
+    Python.
+
+    Since you're already using `virtualenvwrapper`, let's go ahead and continue
+    using that by installing `pyenv-virtualenvwrapper`.
 
     ```
     brew install pyenv-virtualenvwrapper
     ```
 
-16. [IPython][]
+    Be sure to [read the instructions][pyenv-virtualenvwrapper-instructions] on
+    how to use `pyenv-virtualenvwrapper` properly.
 
-[Homebrew]: http://brew.sh
-[IPython]: http://ipython.org
-[PEP8]: http://legacy.python.org/dev/peps/pep-0008/
+3.  [IPython][] is a great alternative Python interactive shell. To install it
+    with the [Notebook][ipython-notebook] feature:
+
+    ```
+    pip install ipython[notebook]
+    ```
+
+
+---
+
+## Advanced
+
+1.  [NumPy][]/[SciPy][]/[matplotlib][]
+
+    ```
+    pip install numpy scipy matplotlib
+    ```
+
+2.  [Spyder][]
+
+    Either install using the [DMG][spyder-dls] or [Homebrew
+    Cask][homebrew-cask].
+
+3.  [pandas][]
+
+    ```
+    pip install pandas
+    ```
+
+
+[pandas]: http://pandas.pydata.org
 [flake8]: https://pypi.python.org/pypi/flake8
+[homebrew-cask]: https://github.com/caskroom/homebrew-cask
+[homebrew]: http://brew.sh
+[ipython-notebook]: http://ipython.org/notebook.html
+[ipython]: http://ipython.org
+[matplotlib]: http://matplotlib.org
+[numpy]: http://www.numpy.org
+[pep8]: http://legacy.python.org/dev/peps/pep-0008/
 [pip]: https://pypi.python.org/pypi/pip
+[pyenv-virtualenvwrapper-instructions]: https://github.com/yyuu/pyenv-virtualenvwrapper
 [pyenv]: https://github.com/yyuu/pyenv
 [python-doc]: https://www.python.org/doc/
 [requirements.txt]: https://pip.readthedocs.org/en/latest/user_guide.html#requirements-files
+[scipy]: http://www.scipy.org/index.html
+[spyder-dls]: https://bitbucket.org/spyder-ide/spyderlib/downloads
+[spyder]: https://bitbucket.org/spyder-ide/spyderlib
 [virtualenv]: https://pypi.python.org/pypi/virtualenv
 [virtualenvwrapper]: https://pypi.python.org/pypi/virtualenvwrapper
