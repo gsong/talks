@@ -12,6 +12,7 @@
         font-weight: normal;
       }
       .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .huge {font-size: 3em;}
       .footer {
         bottom: 2em;
         color: #666;
@@ -23,6 +24,10 @@
   <body>
     <textarea id="source">
 
+name: section
+layout: true
+class: center, middle
+---
 name: normal
 layout: true
 class: top, left
@@ -30,8 +35,7 @@ class: top, left
 .footer[Questions? [george@monozuku.com][] or [@zukefresh][]]
 
 ---
-
-class: center, middle
+template: section
 
 # JSPM Will Be Your Front End Development Best Friend 👭
 
@@ -42,13 +46,13 @@ George Song, Monozuku
 [george@monozuku.com][]
 
 ---
-
 template: normal
 name: FED
 
 # Front end development today
 
 --
+count: false
 
 Starts out simple enough
 
@@ -60,13 +64,12 @@ Starts out simple enough
 ```
 
 ---
-
 template: FED
 
 And then it becomes this
 
 ```html
-<!-- jQuery and jQuery UI, load order is importnat for jQuery UI -->
+<!-- jQuery and jQuery UI, load order is important for jQuery UI -->
 <script src="jquery/dist/jquery.js"></script>
 <script src="sni-jquery-ui/ui/core.js"></script>
 <script src="sni-jquery-ui/ui/widget.js"></script>
@@ -76,7 +79,6 @@ And then it becomes this
 <!-- Angular framework modules -->
 <script src="angular/angular.js"></script>
 <script src="angular-animate/angular-animate.js"></script>
-<script src="angular-resource/angular-resource.js"></script>
 <script src="angular-route/angular-route.js"></script>
 <script src="angular-sanitize/angular-sanitize.js"></script>
 
@@ -90,35 +92,151 @@ And then it becomes this
 **120+** lines of script tag and **you** get to be the dependency manager 🙀
 
 ---
+template: normal
 
 # How did we even get all these modules?
 
-* What do you mean? Just download it and put it in `/scripts` with our own
-    JavaScript files.
-* Fine, we'll keep them in `/vendor`
+* What do you mean? Just download them and put them in `/scripts` with our own JavaScript files.
+--
+count: false
+
+* Fine, we’ll keep them in `/vendor`
+--
+count: false
+
 * Content delivery network (CDN)
+--
+count: false
+
 * Bower (wild west)
+--
+count: false
+
 * npm (if you have nothing nice to say…)
 
 ---
+template: normal
 
-# But I don't want to be the dependency manager
+# But I don’t want to be the dependency manager
 
-* RequireJS (AMD)
-* Browserify (CommonJS, I wanna pretend I'm working with Node)
-* webpack (if JSPM didn't exist)
+* RequireJS (AMD, similar to Angular dependency injection)
+--
+count: false
+
+* Browserify (CommonJS, I wanna pretend I’m working with Node)
+--
+count: false
+
+* webpack (if JSPM didn’t exist)
+--
+count: false
+
+They’re great, but…
+--
+count: false
+
+* Not standards based
+--
+count: false
+
+* Aiming for the HTTP/1.x low bar
+--
+count: false
+
+* Only manage JavaScript dependencies (yay webpack 👏)
+
+---
+template: section
+
+# .huge[💩 😩 😾]
+
+---
+template: section
+
+# jspm 
+
+--
+Frictionless **browser** package management
+
+---
+template: normal
+
+# It’s a twofer!
+
+--
+count: false
+
+* jspm-cli, and the underlying jspm API
+
+--
+count: false
+
+* 🎉 Surprise: It also comes with the SystemJS module loader
+
+---
+template: normal
+
+# What has jspm-cli done for us lately?
+
+--
+count: false
+
+* Replace your current application package manager (or lack thereof), with a sane way of managing *flat* dependencies.
+
+--
+count: false
+
+* Automatically set up and maintain `config.js` for SystemJS
+
+--
+count: false
+
+* Yup, it also bundles for production deployment
+
+---
+template: normal
+
+# What’s SystemJS?
+
+--
+count: false
+
+* Loads any module format: ES6, AMD, CommonJS and globals. Standards based and future(*-ish*) proof.
+
+--
+count: false
+
+* HTTP/2 ready 💙
+
+--
+count: false
+
+* Replaces your current module bundler or `<script>` hell
 
 ---
 
 # Resources
 
-* Bower
-* npm
-* RequireJS
+* [Bower](http://bower.io/)
+* [npm](https://www.npmjs.com/)
+* [RequireJS](http://requirejs.org/)
+* [AMD](http://requirejs.org/docs/whyamd.html)
+* [Browserify](http://browserify.org/)
+* [webpack](https://webpack.github.io/)
+* [jspm](http://jspm.io/)
+* [SystemJS](https://github.com/systemjs/systemjs)
+* [Comparison of module bundlers](http://webpack.github.io/docs/comparison.html)
 
 ---
+template: normal
 
 # How do I get these slides?
+
+## <http://bit.ly/jspmpdx>
+
+# Where can I see some code?
+
+## <https://github.com/gsong/es6-jspm-gulp-starter>
 
 
 [@zukefresh]: https://twitter.com/zukefresh
