@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JSPM As Best Friend</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz|Droid+Serif:400,700,400italic|Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .footer {
+        bottom: 2em;
+        color: #666;
+        font-size: .75em;
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+name: normal
+layout: true
+class: top, left
+
+.footer[Questions? [george@monozuku.com][] or [@zukefresh][]]
+
+---
+
+class: center, middle
+
+# JSPM Will Be Your Front End Development Best Friend 👭
+
+George Song, Monozuku
+
+[@zukefresh][]
+
+[george@monozuku.com][]
+
+---
+
+template: normal
+name: FED
+
+# Front end development today
+
+--
+
+Starts out simple enough
+
+```html
+<script src="angular/angular.js"></script>
+<script src="angular-route/angular-route.js"></script>
+<script src="angular-sanitize/angular-sanitize.js"></script>
+<script src="my-awesome-app.js"></script>
+```
+
+---
+
+template: FED
+
+And then it becomes this
+
+```html
+<!-- jQuery and jQuery UI, load order is importnat for jQuery UI -->
+<script src="jquery/dist/jquery.js"></script>
+<script src="sni-jquery-ui/ui/core.js"></script>
+<script src="sni-jquery-ui/ui/widget.js"></script>
+<script src="sni-jquery-ui/ui/mouse.js"></script>
+<script src="sni-jquery-ui/ui/sortable.js"></script>
+
+<!-- Angular framework modules -->
+<script src="angular/angular.js"></script>
+<script src="angular-animate/angular-animate.js"></script>
+<script src="angular-resource/angular-resource.js"></script>
+<script src="angular-route/angular-route.js"></script>
+<script src="angular-sanitize/angular-sanitize.js"></script>
+
+<!-- Third party modules -->
+…
+
+<!-- Our own code -->
+…
+```
+
+**120+** lines of script tag and **you** get to be the dependency manager 🙀
+
+---
+
+# How did we even get all these modules?
+
+* What do you mean? Just download it and put it in `/scripts` with our own
+    JavaScript files.
+* Fine, we'll keep them in `/vendor`
+* Content delivery network (CDN)
+* Bower (wild west)
+* npm (if you have nothing nice to say…)
+
+---
+
+# But I don't want to be the dependency manager
+
+* RequireJS (AMD)
+* Browserify (CommonJS, I wanna pretend I'm working with Node)
+* webpack (if JSPM didn't exist)
+
+---
+
+# Resources
+
+* Bower
+* npm
+* RequireJS
+
+---
+
+# How do I get these slides?
+
+
+[@zukefresh]: https://twitter.com/zukefresh
+[george@monozuku.com]: mailto:george@monozuku.com
+
+    </textarea>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
