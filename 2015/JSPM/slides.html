@@ -37,7 +37,7 @@ class: top, left
 ---
 template: section
 
-# JSPM Will Be Your Front End Development Best Friend 👭
+# JSPM Wants To Be Your Front End Development Best Friend 👭
 
 George Song, Monozuku
 
@@ -94,7 +94,7 @@ And then it becomes this
 ---
 template: normal
 
-# How did we even get all these modules?
+# How do we manage all these modules?
 
 * What do you mean? Just download them and put them in `/scripts` with our own JavaScript files.
 --
@@ -153,7 +153,7 @@ template: section
 ---
 template: section
 
-# jspm 
+# jspm
 
 --
 Frictionless **browser** package management
@@ -176,10 +176,7 @@ count: false
 ---
 template: normal
 
-# What has jspm-cli done for us lately?
-
---
-count: false
+# What has jspm-cli done for you lately?
 
 * Replace your current application package manager (or lack thereof), with a sane way of managing *flat* dependencies.
 
@@ -196,12 +193,19 @@ count: false
 ---
 template: normal
 
-# What’s SystemJS?
+# What about the freebie, SystemJS?
+
+* Loads any module format: ES6, AMD, CommonJS and globals.
 
 --
 count: false
 
-* Loads any module format: ES6, AMD, CommonJS and globals. Standards based and future(*-ish*) proof.
+* Tracks dependencies such as stylesheets and templates (*Get Out!** 😹)
+
+--
+count: false
+
+* Standards based and future(*-ish*) proof.
 
 --
 count: false
@@ -214,18 +218,40 @@ count: false
 * Replaces your current module bundler or `<script>` hell
 
 ---
+template: normal
+
+```html
+<script src="jspm_packages/system.js"></script>
+<script src="config.js"></script>
+<script>System.import('./scripts/main');</script>
+```
+
+--
+count: false
+
+# What do you say, besties? 👯
+
+---
 
 # Resources
 
-* [Bower](http://bower.io/)
-* [npm](https://www.npmjs.com/)
-* [RequireJS](http://requirejs.org/)
-* [AMD](http://requirejs.org/docs/whyamd.html)
-* [Browserify](http://browserify.org/)
-* [webpack](https://webpack.github.io/)
-* [jspm](http://jspm.io/)
-* [SystemJS](https://github.com/systemjs/systemjs)
-* [Comparison of module bundlers](http://webpack.github.io/docs/comparison.html)
+* [Bower](http://bower.io/): <http://bower.io/>
+
+* [npm](https://www.npmjs.com/): <https://www.npmjs.com/>
+
+* [RequireJS](http://requirejs.org/): <http://requirejs.org/>
+
+* [AMD](http://requirejs.org/docs/whyamd.html): <http://requirejs.org/docs/whyamd.html>
+
+* [Browserify](http://browserify.org/): <http://browserify.org/>
+
+* [webpack](https://webpack.github.io/): <https://webpack.github.io/>
+
+* [jspm](http://jspm.io/): <http://jspm.io/>
+
+* [SystemJS](https://github.com/systemjs/systemjs): <https://github.com/systemjs/systemjs>
+
+* [Comparison of module bundlers](http://webpack.github.io/docs/comparison.html): <http://webpack.github.io/docs/comparison.html>
 
 ---
 template: normal
@@ -237,6 +263,11 @@ template: normal
 # Where can I see some code?
 
 ## <https://github.com/gsong/es6-jspm-gulp-starter>
+
+---
+template: section
+
+# Do we have time for demos and questions?
 
 
 [@zukefresh]: https://twitter.com/zukefresh
