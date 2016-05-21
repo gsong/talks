@@ -1,283 +1,44 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="">
   <head>
-    <title>jspm As Best Friend</title>
     <meta charset="utf-8">
-    <style>
-      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz|Droid+Serif:400,700,400italic|Ubuntu+Mono:400,700,400italic);
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talks by George Song</title>
 
-      body { font-family: 'Droid Serif'; }
-      h1, h2, h3 {
-        font-family: 'Yanone Kaffeesatz';
-        font-weight: normal;
-      }
-      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
-      .huge {font-size: 3em;}
-      .footer {
-        bottom: 2em;
-        color: #666;
-        font-size: .75em;
-        position: absolute;
-      }
-    </style>
+    <!-- Disable tap highlight on IE -->
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <!-- Color the status bar on mobile devices -->
+    <meta name="theme-color" content="#2F3BA2">
+
+    <!-- Material Design Lite page styles:
+    You can choose other color schemes from the CDN, more info here http://www.getmdl.io/customize/index.html
+    Format: material.color1-color2.min.css, some examples:
+    material.red-teal.min.css
+    material.blue-orange.min.css
+    material.purple-indigo.min.css
+    -->
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css">
+
+    <!-- Material Design icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   </head>
-  <body>
-    <textarea id="source">
-
-name: section
-layout: true
-class: center, middle
----
-name: normal
-layout: true
-class: top, left
-
-.footer[Questions? [george@monozuku.com][] or [@zukefresh][]]
-
----
-template: section
-
-# jspm Wants To Be Your Front End Development Best Friend 👭
-
-George Song, Monozuku
-
-[@zukefresh][]
-
-[george@monozuku.com][]
-
----
-template: normal
-name: FED
-
-# Front end development today
-
---
-count: false
-
-Starts out simple enough
-
-```html
-<script src="angular/angular.js"></script>
-<script src="angular-route/angular-route.js"></script>
-<script src="angular-sanitize/angular-sanitize.js"></script>
-<script src="my-awesome-app.js"></script>
-```
-
----
-template: FED
-
-And then it becomes this
-
-```html
-<!-- jQuery and jQuery UI, load order is important for jQuery UI -->
-<script src="jquery/dist/jquery.js"></script>
-<script src="jquery-ui/ui/core.js"></script>
-<script src="jquery-ui/ui/widget.js"></script>
-<script src="jquery-ui/ui/mouse.js"></script>
-<script src="jquery-ui/ui/sortable.js"></script>
-
-<!-- Angular framework modules -->
-<script src="angular/angular.js"></script>
-<script src="angular-animate/angular-animate.js"></script>
-<script src="angular-route/angular-route.js"></script>
-<script src="angular-sanitize/angular-sanitize.js"></script>
-
-<!-- Third party modules -->
-…
-
-<!-- Our own code -->
-…
-```
-
-**120+** lines of script tag and **you** get to be the dependency manager 🙀
-
----
-template: normal
-
-# How do we manage all these modules?
-
-* What do you mean? Just download them and put them in `/scripts` with our own JavaScript files.
---
-count: false
-
-* Fine, we’ll keep them in `/vendor`
---
-count: false
-
-* Content delivery network (CDN)
---
-count: false
-
-* Bower (wild west)
---
-count: false
-
-* npm (if you have nothing nice to say…)
-
----
-template: normal
-
-# But I don’t want to be the dependency manager
-
-* RequireJS (AMD, similar to Angular dependency injection)
---
-count: false
-
-* Browserify (CommonJS, I wanna pretend I’m working with Node)
---
-count: false
-
-* webpack (if jspm didn’t exist)
---
-count: false
-
-They’re great, but…
---
-count: false
-
-* Not standards based
---
-count: false
-
-* Aiming for the HTTP/1.x low bar
---
-count: false
-
-* Only manage JavaScript dependencies (yay webpack 👏)
-
----
-template: section
-
-# .huge[💩 😩 😾]
-
----
-template: section
-
-# jspm
-
---
-Frictionless **browser** package management
-
----
-template: normal
-
-# It’s a twofer!
-
---
-count: false
-
-* jspm-cli, and the underlying jspm API
-
---
-count: false
-
-* 🎉 Surprise: It also comes with the SystemJS module loader
-
----
-template: normal
-
-# What has jspm-cli done for you lately?
-
-* Replace your current application package manager (or lack thereof), with a sane way of managing *flat* dependencies.
-
---
-count: false
-
-* Automatically set up and maintain `config.js` for SystemJS
-
---
-count: false
-
-* Yup, it also bundles for production deployment
-
----
-template: normal
-
-# What about the freebie, SystemJS?
-
-* Loads any module format: ES6, AMD, CommonJS and globals.
-
---
-count: false
-
-* Tracks dependencies such as stylesheets and templates (*Get Out!** 😹)
-
---
-count: false
-
-* Replaces your current module bundler or `<script>` hell
-
---
-count: false
-
-* Standards based and future(*-ish*) proof.
-
---
-count: false
-
-* HTTP/2 ready 💙
-
----
-template: normal
-
-```html
-<script src="jspm_packages/system.js"></script>
-<script src="config.js"></script>
-<script>System.import('./scripts/main');</script>
-```
-
---
-count: false
-
-# What do you say, besties? 👯
-
----
-
-# Resources
-
-* [Bower](http://bower.io/): <http://bower.io/>
-
-* [npm](https://www.npmjs.com/): <https://www.npmjs.com/>
-
-* [RequireJS](http://requirejs.org/): <http://requirejs.org/>
-
-* [AMD](http://requirejs.org/docs/whyamd.html): <http://requirejs.org/docs/whyamd.html>
-
-* [Browserify](http://browserify.org/): <http://browserify.org/>
-
-* [webpack](https://webpack.github.io/): <https://webpack.github.io/>
-
-* [jspm](http://jspm.io/): <http://jspm.io/>
-
-* [SystemJS](https://github.com/systemjs/systemjs): <https://github.com/systemjs/systemjs>
-
-* [Comparison of module bundlers](http://webpack.github.io/docs/comparison.html): <http://webpack.github.io/docs/comparison.html>
-
----
-template: normal
-
-# How do I get these slides?
-
-## <http://gsong.github.io/talks>
-
-# Where can I see some code?
-
-## <https://github.com/gsong/es6-jspm-gulp-starter>
-
----
-template: section
-
-# Do we have time for demos and questions?
-
-
-[@zukefresh]: https://twitter.com/zukefresh
-[george@monozuku.com]: mailto:george@monozuku.com
-
-    </textarea>
-    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
-    </script>
-    <script>
-      var slideshow = remark.create();
-    </script>
+  <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
+        <div class="mdl-layout__header-row">
+          <h3>Talks by George Song</h3>
+        </div>
+      </header>
+      <main class="mdl-layout__content">
+        <ul>
+          <li><a href="2015/JSPM/">jspm Wants To Be Your Front End Development Best Friend 👭</a></li>
+        </ul>
+      </main>
+    </div>
+
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
   </body>
 </html>
