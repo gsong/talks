@@ -27,12 +27,15 @@
 name: section
 layout: true
 class: center, middle
+
+
 ---
 name: normal
 layout: true
 class: top, left
 
 .footer[Questions? [george@monozuku.com][] or [@zukefresh][]]
+
 
 ---
 template: section
@@ -45,6 +48,7 @@ George Song, Monozuku
 
 [george@monozuku.com][]
 
+
 ---
 template: normal
 name: FED
@@ -52,8 +56,6 @@ name: FED
 # Front end development today
 
 --
-count: false
-
 Starts out simple enough
 
 ```html
@@ -62,6 +64,7 @@ Starts out simple enough
 <script src="angular-sanitize/angular-sanitize.js"></script>
 <script src="my-awesome-app.js"></script>
 ```
+
 
 ---
 template: FED
@@ -97,22 +100,19 @@ template: normal
 # How do we manage all these modules?
 
 * What do you mean? Just download them and put them in `/scripts` with our own JavaScript files.
---
-count: false
 
+--
 * Fine, we’ll keep them in `/vendor`
---
-count: false
 
+--
 * Content delivery network (CDN)
---
-count: false
 
+--
 * Bower (wild west)
---
-count: false
 
+--
 * npm (if you have nothing nice to say…)
+
 
 ---
 template: normal
@@ -120,35 +120,32 @@ template: normal
 # But I don’t want to be the dependency manager
 
 * RequireJS (AMD, similar to Angular dependency injection)
---
-count: false
 
+--
 * Browserify (CommonJS, I wanna pretend I’m working with Node)
---
-count: false
 
-* webpack (if jspm didn’t exist)
 --
-count: false
+* webpack (if jspm didn’t exist)
+
+--
 
 They’re great, but…
---
-count: false
 
+--
 * Not standards based
---
-count: false
 
+--
 * Aiming for the HTTP/1.x low bar
---
-count: false
 
+--
 * Only manage JavaScript dependencies (yay webpack 👏)
+
 
 ---
 template: section
 
 # .huge[💩 😩 😾]
+
 
 ---
 template: section
@@ -158,20 +155,18 @@ template: section
 --
 Frictionless **browser** package management
 
+
 ---
 template: normal
 
 # It’s a twofer!
 
 --
-count: false
-
 * jspm-cli, and the underlying jspm API
 
 --
-count: false
-
 * 🎉 Surprise: It also comes with the SystemJS module loader
+
 
 ---
 template: normal
@@ -181,14 +176,11 @@ template: normal
 * Replace your current application package manager (or lack thereof), with a sane way of managing *flat* dependencies.
 
 --
-count: false
-
 * Automatically set up and maintain `config.js` for SystemJS
 
 --
-count: false
-
 * Yup, it also bundles for production deployment
+
 
 ---
 template: normal
@@ -198,24 +190,17 @@ template: normal
 * Loads any module format: ES6, AMD, CommonJS and globals.
 
 --
-count: false
-
 * Tracks dependencies such as stylesheets and templates (*Get Out!** 😹)
 
 --
-count: false
-
 * Replaces your current module bundler or `<script>` hell
 
 --
-count: false
-
 * Standards based and future(*-ish*) proof.
 
 --
-count: false
-
 * HTTP/2 ready 💙
+
 
 ---
 template: normal
@@ -227,9 +212,8 @@ template: normal
 ```
 
 --
-count: false
-
 # What do you say, besties? 👯
+
 
 ---
 
@@ -253,6 +237,7 @@ count: false
 
 * [Comparison of module bundlers](http://webpack.github.io/docs/comparison.html): <http://webpack.github.io/docs/comparison.html>
 
+
 ---
 template: normal
 
@@ -263,6 +248,7 @@ template: normal
 # Where can I see some code?
 
 ## <https://github.com/gsong/es6-jspm-gulp-starter>
+
 
 ---
 template: section
@@ -277,7 +263,9 @@ template: section
     <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
     </script>
     <script>
-      var slideshow = remark.create();
+      var slideshow = remark.create({
+        countIncrementalSlides: false
+      });
     </script>
   </body>
 </html>
