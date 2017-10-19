@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React and Redux</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz|Droid+Serif:400,700,400italic|Ubuntu+Mono:400,700,400italic);
+
+      body {
+        font-family: 'Droid Serif';
+      }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      li {
+        margin-bottom: .5em;
+      }
+
+      .remark-code {
+        font-family: 'Ubuntu Mono';
+        font-size: 1.6em;
+      }
+
+      .hljs-default .hljs {
+        overflow: visible;
+        background: none;
+      }
+
+      .large {font-size: 1.8em;}
+
+      .normal {font-size: 1rem;}
+
+      .title {
+        padding-bottom: 5em;
+      }
+      .footer {
+        bottom: 2em;
+        color: #888;
+        position: absolute;
+      }
+
+      .muted {
+        color: #bbb;
+      }
+
+      /* Two-column layout */
+      .left-column {
+        color: #777;
+        width: 20%;
+        height: 92%;
+        float: left;
+      }
+        .left-column h2:last-of-type, .left-column h3:last-child {
+          color: #000;
+        }
+      .right-column {
+        width: 75%;
+        float: right;
+        padding-top: 1em;
+      }
+        .right-column ul {
+          margin: 0 auto;
+        }
+
+      .left-half, .right-half {
+        width: 50%;
+        height: 92%;
+        font-size: .8rem;
+      }
+      .left-half {
+        float: left;
+      }
+      .right-half {
+        float: right;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+name: section
+layout: true
+class: center, middle
+
+
+---
+name: normal
+layout: true
+class: top, left
+
+
+---
+template: section
+name: center
+layout: true
+
+
+---
+template: section
+
+# What the Heck Is Redux? 🤷🏾‍♀️
+
+### With a little bit of React sprinkled in.
+### OK. A lot.
+
+
+---
+template: normal
+
+# 🙏🏾 Please Minimize Incidental Noise Near the 🎤
+
+.large[
+e.g.
+
+* Food packaging
+* Tapping your pen on the table
+* Eating
+
+Thank you. 😄
+]
+
+
+---
+template: normal
+
+# Arrow Functions
+
+```js
+(param1, param2, …) => { statements }
+(param1, param2, …) => expression
+// or: (param1, param2, …) => { return expression; }
+
+// Parentheses are optional when there's only one parameter name:
+(singleParam) => { statements }
+singleParam => { statements }
+singleParam => expression
+
+// No parameters
+() => { statements }
+```
+
+
+---
+template: normal
+
+.left-half[
+## Imperative
+
+```js
+$("form").on("submit", function(e) {
+  e.preventDefault();
+  $.ajax({
+    url: "/customers",
+    type: "POST",
+    data: $(this).serialize(),
+    success: function(data) {
+      $(".status")
+      .append("<h3>" + data + "</h3>");
+    }
+  });
+});
+```
+]
+
+.right-half[
+## Declarative
+
+```js
+class NoteBox extends React.Component {
+  // ... more code ...
+  render = () => (
+    <div className="NoteBox">
+      <h1>Notes</h1>
+      <NoteList data={this.state.data} />
+      <NoteForm onPost={this.handlePost} />
+    </div>
+  );
+}
+```
+]
+
+
+---
+template: normal
+
+# Zen of React 🍵
+
+.large[
+* Abstraction away from the DOM
+* Think of application and UI in terms of **state**
+* Rendering a component returns *descriptions* of what the UI should look like right now
+* Mix and match components to build UIs
+* *One way* data flow:
+    1. State is **never changed**, but **replaced**
+    1. Components pass data to their children
+]
+
+???
+* Component tree
+* Virtual DOM
+
+
+---
+template: center
+
+# .large[`UI = f(state)`]
+
+???
+* State machine
+* Functional
+
+
+---
+template: normal
+
+# What Does a Component Look Like?
+
+.left-half[
+## Functional
+
+```js
+const ImportantComponent = props => (
+  <div>
+    Hello {props.name}!
+  </div>
+);
+```
+]
+
+.right-half[
+## Class
+
+```js
+class ImportantComponent extends React.Component {
+  // ... beautiful code ...
+
+  render = () => (
+    <div>
+      Hello {this.props.name}!
+      <Button onClick={this.handleClick}>
+        A Button
+      </Button>
+    </div>
+  );
+}
+```
+]
+
+
+---
+template: normal
+
+# Slight Detour: JSX 🙇🏻‍♀️
+
+AKA: **Yes**, Facebook says it's 👌🏾 to mix your JS and HTML
+
+.left-half[
+## JSX
+
+```js
+const Component = props => (
+  <div className="large">
+    Hello {props.name}!
+  </div>
+);
+```
+]
+
+.right-half[
+## What it actually means
+
+```js
+const Component = props => React.createElement(
+  'div',  // component
+  {className: 'large'},  // props
+  `Hello ${props.name}!`  // ...children
+);
+```
+]
+
+???
+* JS template literal
+
+---
+template: normal
+
+# Internal State
+
+.left-half[
+```js
+class Counter extends React.Component {
+  state = { counter: 0 };
+
+  onClick = () => {
+    this.setState({ counter: this.state.counter + 1 });
+  };
+
+  render = () => (
+    <div>
+      Button was clicked:
+      <div>{this.state.counter} times</div>
+      <button onClick={this.onClick}>Click Me</button>
+    </div>
+  );
+}
+```
+]
+
+.right-half[
+<video autoplay loop>
+  <source src="assets/internal_state_button.mp4" type="video/mp4">
+</video>
+]
+
+???
+* `setState` always takes a **new** state object
+
+
+---
+template: normal
+
+# 👩‍👧 Communication
+
+.left-half[
+```js
+const Button = ({ label, onClick }) => (
+  <button onClick={onClick}>{label}</button>
+);
+
+class Counter extends React.Component {
+  state = { counter: 0 };
+
+  increaseCount = () => {
+    this.setState({ counter: this.state.counter + 1 });
+  };
+
+  decreaseCount = () => {
+    this.setState({ counter: this.state.counter - 1 });
+  };
+
+  render = () => (
+    <div>
+      <div>Clicked {this.state.counter} times</div>
+      <Button label="Increase Count" onClick={this.increaseCount} />
+      <Button label="Decrease Count" onClick={this.decreaseCount} />
+    </div>
+  );
+}
+```
+]
+
+.right-half[
+<video autoplay loop>
+  <source src="assets/parent_child_communication.mp4" type="video/mp4">
+</video>
+]
+
+???
+* Container/presentation
+* Stateful/stateless
+* Smart/dumb
+
+
+---
+template: normal
+
+# Enough React, Let's Talk Redux
+
+.large[
+* Most popular state management tool for React apps
+* Pure, functional implementation of the Flux pattern
+    * Single store with single state
+    * Single reducing function
+]
+
+
+---
+template: center
+
+# .large[`(currentState, action) => newState`]
+
+
+---
+template: normal
+
+## State
+
+```js
+{
+  todos: [
+    { id: 1, text: 'Start', completed: true },
+    { id: 2, text: 'Finsih', completed: false }
+  ],
+  visibilityFilter: 'SHOW_COMPLETED'
+}
+```
+
+## Actions
+
+```js
+{ type: 'ADD_TODO', payload: 'Eat' }
+{ type: 'TOGGLE_TODO', payload: 1 }
+```
+
+???
+* State hierarchy should reflect UI hierarchy as much as possible
+* Payload is optional for actions
+
+
+---
+template: normal
+
+## Action Creators 🏭
+
+Not required, but good practice.
+
+```js
+const ADD_TODO = 'ADD_TODO'
+const TOGGLE_TODO = 'TOGGLE_TODO'
+
+const addTodo = text => ({ type: ADD_TODO, payload: text });
+const toggleTodo = id => ({ type: TOGGLE_TODO, payload: id });
+```
+
+
+---
+template: normal
+
+## Reducers ✂
+
+.normal[
+```js
+const visibilityFilter = (state = SHOW_ALL, action) =>
+  action.type === SET_VISIBILITY_FILTER ? action.payload : state;
+
+const todos = (state = [], action) => {
+  switch (action.type) {
+    case ADD_TODO:
+      return state.concat(action.payload);
+    case REMOVE_TODO:
+      return state.filter(t => t.id !== action.payload);
+    default:
+      return state;
+  }
+};
+
+const todoApp = (state = {}, action) => ({
+  todos: todos(state.todos, action),
+  visibilityFilter: visibilityFilter(state.visibilityFilter, action)
+});
+```
+]
+
+???
+* Instead of adding stores, split root reducer to smaller reducers that
+  independently operate on different parts of the state.
+
+
+---
+template: center
+
+<img src="assets/redux_flow.gif" alt="Redux Flow" height="600"/>
+
+???
+1. Component dispatche an action
+1. Dispatcher retrieves the current state and passes the current state and action to reducer
+1. Reducer produces a new state
+1. Component gets new state and re-renders itself in the virtual DOM
+
+
+---
+template: center
+
+# What About Side Effects? 😓
+### If only our apps were so simple!
+
+
+---
+template: normal
+
+# Middleware
+
+.large[
+* Inject behavior prior to processing an action
+* Dispatcher plug-ins
+* Chainable
+* Typical use cases: logging, async requests
+]
+
+
+---
+template: center
+
+<img src="assets/redux_with_middleware.gif" alt="Redux with Middleware" height="600"/>
+
+???
+* Thunk is just a fancy word for delayed evaluation
+* Flow for redux-thunk
+  1. Component dispatches a thunk action
+  1. redux-thunk middleware intercepts the dispatch
+  1. Thunk is invoked
+  1. Stuff gets done
+  1. More actions are dispatched to the store in the thunk
+  1. Redux store does its magic
+  1. Component gets new state and re-renders
+* Side effects happen outside of the store and is not part of the state machinery
+
+
+---
+template: normal
+
+# What the Thunk?
+
+```js
+import { getTodos } from '../lib/todoService';
+import { hideMessage, showMessage } from './messages';
+
+const TODOS_LOAD = 'TODOS_LOAD';
+const loadTodos = todos => ({ type: TODOS_LOAD, payload: todos });
+
+const fetchTodos = () => async dispatch => {
+  dispatch(showMessage('Loading Todos'));
+  const todos = await getTodos();  // side effect ⏰
+  dispatch(loadTodos(todos));
+  dispatch(hideMessage());
+};
+```
+
+???
+* `dispatch` injected by redux-thunk middleware
+* `async/await` is syntactic sugar for promises + generators
+
+
+---
+template: center
+
+# Demo Time
+
+???
+1. Network fetch: XHR and Other only
+1. React
+    * Root component containing four children
+    * `TodoForm` component update `props.currentTodo`
+    * `TodoList` component
+    * `TodoItem` component
+1. Redux showtime!
+
+
+    </textarea>
+    <script src="../../static/scripts/remark.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create({
+        ratio: '16:9',
+        countIncrementalSlides: false
+      });
+    </script>
+  </body>
+</html>
