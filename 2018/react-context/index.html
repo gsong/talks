@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Context API</title>
+    <meta charset="utf-8">
+    <link href="../../static/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz|Droid+Serif:400,700,400italic|Ubuntu+Mono:400,700,400italic);
+
+      body {
+        font-family: 'Droid Serif';
+      }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      li {
+        margin-bottom: .5em;
+      }
+
+      .remark-code, .remark-inline-code {
+        font-family: 'Ubuntu Mono';
+        font-size: 1.8em;
+      }
+
+      .large {font-size: 1.5em;}
+
+      .title {
+        padding-bottom: 5em;
+      }
+      .footer {
+        bottom: 2em;
+        color: #888;
+        position: absolute;
+      }
+
+      .muted {
+        color: #bbb;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+name: section
+layout: true
+class: center, middle
+
+
+---
+name: normal
+layout: true
+class: top, left
+
+.footer[
+Questions?
+<i class="fa fa-twitter" aria-hidden="true"></i> [@zukefresh][] |
+<i class="fa fa-github" aria-hidden="true"></i> [gsong](https://github.com/gsong)
+]
+
+
+---
+template: normal
+name: code
+layout: true
+class: middle, left
+
+
+---
+template: normal
+name: center
+layout: true
+class: center, middle
+
+
+---
+template: section
+
+# React Context API
+
+### As of v16.3.0
+
+George Song
+
+<i class="fa fa-twitter" aria-hidden="true"></i> [@zukefresh][]
+
+<i class="fa fa-github" aria-hidden="true"></i> <https://github.com/gsong>
+
+
+---
+template: center
+
+# It’s All about State
+
+## Component → Context → Unstated → Redux/MobX
+
+
+---
+template: code
+
+.large[
+```
+const { Provider, Consumer } =
+  React.createContext()
+```
+]
+
+
+---
+template: code
+
+.large[
+```
+<Provider value={/* context value */}>
+```
+]
+
+
+---
+template: code
+
+.large[
+```
+<Consumer>
+  {value => (
+    /* render based on context value */
+  )}
+</Consumer>
+```
+]
+
+
+---
+template: normal
+
+.large[
+```
+const { Provider, Consumer } =
+  React.createContext("")
+
+<Provider value="Pat">
+  <Consumer>
+    {value => <p>{value}</p>}
+  </Consumer>
+</Provider>
+```
+]
+
+
+---
+template: code
+
+.large[
+```
+<p>Pat</p>
+```
+]
+
+
+---
+template: center
+
+# Online Example
+
+.large[
+<https://codesandbox.io/s/x339kjwqjz>
+]
+
+
+---
+template: code
+
+# Some Use Cases
+
+.large[
+* Local “global” states
+* Compound component
+* Nested contexts
+]
+
+
+---
+template: code
+
+# Curious?
+
+.large[
+* [React Documentation: Context](https://reactjs.org/docs/context.html)
+* [React Documentation: Render Props](https://reactjs.org/docs/render-props.html)
+* [You Might Not Need Redux](https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367)
+]
+
+[@zukefresh]: https://twitter.com/zukefresh
+    </textarea>
+    <script src="../../static/scripts/remark.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create({
+        ratio: '16:9',
+        countIncrementalSlides: false
+      });
+    </script>
+  </body>
+</html>
