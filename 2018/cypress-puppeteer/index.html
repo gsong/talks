@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>User-driven Testing with Cypress || Puppeteer</title>
+    <meta charset="utf-8">
+    <link href="../../static/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz|Droid+Serif:400,700,400italic|Ubuntu+Mono:400,700,400italic);
+
+      body {
+        font-family: 'Droid Serif';
+      }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      li {
+        margin-bottom: .5em;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      table, th, td {
+        border: 1px solid gray;
+      }
+      th, td {
+        padding: .5rem;
+        width: 50%;
+      }
+
+      .remark-code, .remark-inline-code {
+        font-family: 'Ubuntu Mono';
+        font-size: 1.8em;
+      }
+
+      .large {font-size: 1.5em;}
+
+      .title {
+        padding-bottom: 5em;
+      }
+      .footer {
+        bottom: 2em;
+        color: #888;
+        position: absolute;
+      }
+
+      .muted {
+        color: #bbb;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+name: section
+layout: true
+class: center, middle
+
+
+---
+name: normal
+layout: true
+class: top, left
+
+.footer[
+Questions?
+<i class="fa fa-twitter" aria-hidden="true"></i> [@zukefresh][] |
+<i class="fa fa-github" aria-hidden="true"></i> [gsong](https://github.com/gsong)
+]
+
+
+---
+template: normal
+name: code
+layout: true
+class: middle, left
+
+
+---
+template: normal
+name: center
+layout: true
+class: center, middle
+
+
+---
+template: section
+
+# User-driven Testing
+
+### With Cypress or Puppeteer
+
+George Song
+
+<i class="fa fa-twitter" aria-hidden="true"></i> [@zukefresh][]
+
+<i class="fa fa-github" aria-hidden="true"></i> <https://github.com/gsong>
+
+
+---
+template: center
+
+# It’s All about the Customer
+
+## User-driven Design → User-driven Development → User-driven Testing
+
+
+---
+template: code
+
+.large[
+* Codify customer workflow during feature development
+* Validate requirements with stakeholders
+* Demonstrate intent to other developers and QA
+]
+
+
+---
+template: normal
+
+<img src="text-context.png" width="100%" alt="Left image shows how Cypress operates within the browser environment, and injects itself between the browser and the web app. Right image shows how Puppeteer communicates with the browser via DevTools Protocol, and needs to be driven via a test runner."/>
+
+
+---
+template: code
+
+| Cypress                                                                                             | Puppeteer                                                                 |
+| --------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| Designed for browser driven testing                                                                 | General purpose API to drive Chrome                                       |
+| Isolated test environment and runner                                                                | Relies on external test framework                                         |
+| Has its own testing centric DSL                                                                     | Powerful Async/Await based JavaScript API which powers DevTools           |
+| Work with jQuery $objects                                                                           | Work with conceptual objects representing the browser and the DOM         |
+| Page Object Pattern? Custom commands                                                                | Page Object Pattern? Helper functions                                     |
+| Assert what *should* happen, `cy` will **keep trying until the condition is fulfilled** or time out | You figure out how to fulfill the test conditions, and you write the code |
+
+
+---
+template: center
+
+# Demo Time
+
+
+---
+template: code
+
+# Curious?
+
+.large[
+* [Cypress.io](https://www.cypress.io)
+* [Puppeteer](https://github.com/GoogleChrome/puppeteer)
+* [Cypress test code](https://github.com/gsong/birky50/blob/development/cypress/integration/navMenu.js)
+* [Puppeteer test code](https://github.com/gsong/birky50/blob/development/src/__tests__/e2e/navMenu.js)
+]
+
+[@zukefresh]: https://twitter.com/zukefresh
+    </textarea>
+    <script src="../../static/scripts/remark.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create({
+        ratio: '16:9',
+        countIncrementalSlides: false
+      });
+    </script>
+  </body>
+</html>
