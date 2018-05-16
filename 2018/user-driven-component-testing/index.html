@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Component Testing</title>
+    <meta charset="utf-8">
+    <link href="../../static/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz|Droid+Serif:400,700,400italic|Ubuntu+Mono:400,700,400italic);
+
+      body {
+        font-family: 'Droid Serif';
+      }
+
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+
+      li {
+        margin-bottom: .5em;
+      }
+
+      li li {
+        font-size: 1.25rem;
+        margin: 0;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      table, th, td {
+        border: 1px solid gray;
+      }
+
+      th, td {
+        padding: .5rem;
+        width: 50%;
+      }
+
+      img {
+        display: block;
+        margin: 0 auto;
+      }
+
+      .remark-code, .remark-inline-code {
+        font-family: 'Ubuntu Mono';
+        font-size: 1.8em;
+      }
+
+      .large {font-size: 1.5em;}
+
+      .title {
+        padding-bottom: 5em;
+      }
+      .footer {
+        bottom: 2em;
+        color: #888;
+        position: absolute;
+      }
+
+      .muted {
+        color: #bbb;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+name: section
+layout: true
+class: center, middle
+
+
+---
+name: normal
+layout: true
+class: top, left
+
+.footer[
+Questions?
+<i class="fa fa-twitter" aria-hidden="true"></i> [@zukefresh][] |
+<i class="fa fa-github" aria-hidden="true"></i> [gsong](https://github.com/gsong)
+]
+
+
+---
+template: normal
+name: code
+layout: true
+class: middle, left
+
+
+---
+template: normal
+name: center
+layout: true
+class: center, middle
+
+
+---
+template: section
+
+# 👩‍💻 User-Centered Testing of React Components ⚛
+
+George Song
+
+<i class="fa fa-twitter" aria-hidden="true"></i> [@zukefresh][]
+
+<i class="fa fa-github" aria-hidden="true"></i> <https://github.com/gsong>
+
+
+---
+template: code
+
+# User-Centered?
+
+.large[
+* How would your customer interact with the component?
+* How do you best communicate the intent of the test?
+]
+
+
+---
+template: normal
+
+## How Do You Test a Presentational Component?
+
+<img src="card.png" alt="A hotel presentational card showing an image on the top part, and details about the hotel on the bottom part." style="width: 25%;" />
+
+
+---
+template: code
+
+# How Do You Test a Presentational Component?
+
+.large[
+* What does the user see?
+* With what does the user interact?
+* How to succinctly communicate the important bits to another developer?
+* [Card test](https://github.com/gsong/birky50/blob/development/src/components/shared/__tests__/Card.js#L10-L25)
+* [Address link test](https://github.com/gsong/birky50/blob/development/src/components/shared/__tests__/Address.js#L9-L16)
+]
+
+
+---
+template: normal
+
+## How Do You Test a Form Component?
+
+<img src="form.png" alt="An HTML form showing three input fields and their labels." style="width: 90%" />
+
+
+---
+template: code
+
+# How Do You Test a Form Component?
+
+.large[
+* What does the user see?
+* With what does the user interact?
+* How to succinctly communicate the important bits to another developer?
+* [Form test](https://github.com/gsong/birky50/blob/development/src/components/__tests__/ContactUs.js#L8-L22)
+]
+
+
+---
+template: code
+
+# How Do You Test for Style Changes?
+
+.large[
+* Snapshots
+* [Address snapshot](https://github.com/gsong/birky50/blob/development/src/components/shared/__tests__/__snapshots__/Address.js.snap#L4-L13)
+* [Card snapshot](https://github.com/gsong/birky50/blob/development/src/components/shared/__tests__/__snapshots__/Card.js.snap#L28-L37)
+]
+
+
+---
+template: normal
+
+## How Do You Test for Optional Props?
+
+<img src="optional-props.png" alt="An HTML form showing three input fields and their labels." style="width: 80%" />
+
+
+---
+template: code
+
+# How Do You Test for Optional Props?
+
+.large[
+* Snapshots
+* [Card test](https://github.com/gsong/birky50/blob/development/src/components/shared/__tests__/Card.js#L43-L51)
+* [Card snapshot](https://github.com/gsong/birky50/blob/development/src/components/shared/__tests__/__snapshots__/Card.js.snap#L105-L134)
+]
+
+
+---
+template: normal
+
+# The Tools Used
+
+.large[
+* [Jest](https://facebook.github.io/jest/)
+    * Test runner
+    * Test structure
+    * Asserts
+    * Snapshots
+* [react-testing-library](https://github.com/kentcdodds/react-testing-library)
+    * Rendering component into DOM container
+    * Selector utilities
+    * Fire DOM event
+* [faker](https://github.com/marak/Faker.js/)
+]
+
+
+[@zukefresh]: https://twitter.com/zukefresh
+    </textarea>
+    <script src="../../static/scripts/remark.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create({
+        ratio: '16:9',
+        countIncrementalSlides: false
+      });
+    </script>
+  </body>
+</html>
