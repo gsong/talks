@@ -121,6 +121,8 @@ template: normal
 
 <img src="text-context.png" width="100%" alt="Left image shows how Cypress operates within the browser environment, and injects itself between the browser and the web app. Right image shows how Puppeteer communicates with the browser via DevTools Protocol, and needs to be driven via a test runner."/>
 
+???
+* Both operate on the DOM, so is framework agnostic
 
 ---
 template: code
@@ -128,11 +130,16 @@ template: code
 | Cypress                                                                                             | Puppeteer                                                                 |
 | --------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
 | Designed for browser driven testing                                                                 | General purpose API to drive Chrome                                       |
-| Isolated test environment and runner                                                                | Relies on external test framework                                         |
+| Isolated test environment and runner                                                                | Relies on external test framework (e.g. Jest)                             |
 | Has its own testing centric DSL                                                                     | Powerful Async/Await based JavaScript API which powers DevTools           |
 | Work with jQuery $objects                                                                           | Work with conceptual objects representing the browser and the DOM         |
 | Page Object Pattern? Custom commands                                                                | Page Object Pattern? Helper functions                                     |
 | Assert what *should* happen, `cy` will **keep trying until the condition is fulfilled** or time out | You figure out how to fulfill the test conditions, and you write the code |
+
+???
+* Can this replace Selenium?
+* How to use alongside component testing?
+* Make it easy so feature developers can write UI based tests
 
 
 ---
@@ -140,6 +147,25 @@ template: center
 
 # Demo Time
 
+???
+
+* Taking screenshots
+
+---
+template: code
+
+# Let's Look at Code
+
+## Tests
+* [Cypress](https://github.com/gsong/birky50/blob/development/cypress/integration/navMenu.js)
+* [Puppeteer](https://github.com/gsong/birky50/blob/development/src/components/NavMenu/test.e2e.js)
+
+## Taking Screenshots
+* [Cypress](https://github.com/gsong/birky50/blob/development/cypress/integration/screenshots.js)
+* [Puppeteer](https://github.com/gsong/birky50/blob/development/src/App/screenshots.e2e.js)
+
+???
+Do side-by-side comparisons
 
 ---
 template: code
@@ -148,10 +174,17 @@ template: code
 
 .large[
 * [Cypress.io](https://www.cypress.io)
+* [Cypress Trade-offs](https://docs.cypress.io/guides/references/trade-offs.html)
 * [Puppeteer](https://github.com/GoogleChrome/puppeteer)
 * [Cypress test code](https://github.com/gsong/birky50/blob/development/cypress/integration/navMenu.js)
-* [Puppeteer test code](https://github.com/gsong/birky50/blob/development/src/__tests__/e2e/navMenu.js)
+* [Puppeteer test code](https://github.com/gsong/birky50/blob/development/src/components/NavMenu/test.e2e.js)
 ]
+
+
+---
+template: center
+
+# S(ch)wag Time
 
 [@zukefresh]: https://twitter.com/zukefresh
     </textarea>
