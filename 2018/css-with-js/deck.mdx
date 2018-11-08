@@ -1,0 +1,100 @@
+# 💅 Style With JavaScript 💅
+---
+## What About CSS?
+
+* “Cascading” sounds nice, until it isn’t.
+* Oh, did you want just a part of that style class? 🤣
+* `<button class='button button-large button-primary button-disabled my-own-effect'>`
+* Give up? `!important` 😓
+* Responsive? But can it do [this][demo]?
+
+[demo]: https://philipwalton.github.io/responsive-components/#nested-components
+---
+## But, What About Sass, Less, BEM, and All the Other Wonderful CSS Frameworks?
+
+* 🔮 We’re all mind readers!
+* 🃏 House of cards: specificity, redundancy, conflicts, inefficient, error-prone.
+* 🤢 **Punishes** customers and developers over time.
+
+---
+Declarative is great.
+
+But not if you don’t have the imperative to back it up.
+---
+## Real Life Metrics From Twitter
+
+|                          | Legacy | PWA   |
+| ------------------------ | ------ | ----- |
+| Bundle Size              | 630KB  | 30KB  |
+| Rules                    | 6,769  | 735   |
+| Selectors                | 9,252  | 740   |
+| Declarations             | 16.7K  | 757   |
+| Unique Declarations      | 3,370  | 730   |
+| Media Queries            | 44     | **0** |
+| Unique Colors            | 36     | 11    |
+| Unique Background Colors | 50     | 32    |
+| Unique Font Sizes        | 46     | 15    |
+| Unique Z-indices         | 39     | 7     |
+
+Which would you rather maintain?
+---
+In case you’re curious, `discovery/build/assets/styles.min.css` is 860KB.
+---
+With CSS:
+
+```
+// *.css
+.fancy-pants { background-color: blue; ... }
+// *.html
+<div class="fancy-pants">
+```
+
+With JS:
+
+```js
+// Component.js
+const fancyPants = css({ backgroundColor: "blue", ... })
+<div className={fancyPants}>
+```
+
+Renders:
+
+```html
+<style>
+  .css-1xcezbh { background-color: blue; ... }
+</style>
+<div class="css-1xcezbh">
+```
+---
+## Ok, So What
+
+```js
+import { isIE11 } from "utils/featureDetect";
+
+const fancyPants = css({
+  background-color: blue,
+  display: isIE11 ? flex: grid
+})
+
+<div className={fancyPants}>
+```
+
+# 🤯
+---
+## 👭 Co-Locate Styling With Rendering
+
+* Code splitting
+* Focus on a single component
+* Changing a single style doesn’t trigger a completely new bundle
+---
+## What’s Better?
+
+* App build times
+* Accessible design
+* Component sharing
+* Testing!
+---
+## What’s Harder?
+
+* Think composition, not cascading
+* Different ways of optimization
